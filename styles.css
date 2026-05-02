@@ -837,6 +837,7 @@ body:has(main.reset-page) {
 
 .reset-card-header {
   margin-bottom: 20px;
+  text-align: center;
 }
 
 .reset-card-header div {
