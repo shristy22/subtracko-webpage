@@ -373,7 +373,7 @@ body::before {
 
 .feature-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 20px;
   padding: 80px 0 40px;
 }
@@ -1048,6 +1048,10 @@ body:has(main.reset-page) {
     justify-self: center;
   }
 
+  .feature-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
   .flow-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1075,10 +1079,13 @@ body:has(main.reset-page) {
   }
 
   .hero-stats,
-  .feature-grid,
   .flow-grid,
   .dual-shot {
     grid-template-columns: 1fr;
+  }
+
+  .feature-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .story-copy,

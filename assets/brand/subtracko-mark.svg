@@ -1,39 +1,29 @@
-<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="bg" x1="84" y1="72" x2="432" y2="448" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#16181D"/>
-      <stop offset="1" stop-color="#090A0C"/>
-    </linearGradient>
-    <linearGradient id="accent" x1="172" y1="328" x2="355" y2="171" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#7CF6FF"/>
-      <stop offset="1" stop-color="#00D9FF"/>
-    </linearGradient>
-    <linearGradient id="glow" x1="145" y1="340" x2="357" y2="165" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#D6FCFF" stop-opacity="0.95"/>
-      <stop offset="1" stop-color="#7CF6FF" stop-opacity="0.65"/>
-    </linearGradient>
-    <filter id="shadow" x="0" y="0" width="512" height="512" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-      <feOffset dy="20"/>
-      <feGaussianBlur stdDeviation="20"/>
-      <feComposite in2="hardAlpha" operator="out"/>
-      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0.913725 0 0 0 0 1 0 0 0 0.18 0"/>
-      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1"/>
-      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape"/>
-    </filter>
-  </defs>
+<svg width="1024" height="1024" viewBox="0 0 56 56"
+  fill="none" xmlns="http://www.w3.org/2000/svg">
 
-  <g filter="url(#shadow)">
-    <rect x="44" y="44" width="424" height="424" rx="116" fill="url(#bg)"/>
-    <rect x="49" y="49" width="414" height="414" rx="111" stroke="#2B2E34" stroke-width="10"/>
+  <!-- app icon background -->
+  <rect width="56" height="56" rx="12" fill="#0d0d0d"/>
 
-    <path d="M144 369C144 354.641 155.641 343 170 343H178C192.359 343 204 354.641 204 369V382C204 396.359 192.359 408 178 408H170C155.641 408 144 396.359 144 382V369Z" fill="#F5F7FA"/>
-    <path d="M230 290C230 275.641 241.641 264 256 264H264C278.359 264 290 275.641 290 290V382C290 396.359 278.359 408 264 408H256C241.641 408 230 396.359 230 382V290Z" fill="url(#accent)"/>
-    <path d="M316 210C316 195.641 327.641 184 342 184H350C364.359 184 376 195.641 376 210V382C376 396.359 364.359 408 350 408H342C327.641 408 316 396.359 316 382V210Z" fill="#F5F7FA"/>
+  <!-- wallet body -->
+  <path d="M10 20h36v24a4 4 0 0 1-4 4H14a4 4 0 0 1-4-4V20z"
+    fill="#1a2a22" stroke="#00C8A8" stroke-width="1.6"/>
 
-    <path d="M156 304L237 255.5L314 208.5L370 157" stroke="url(#glow)" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/>
-    <circle cx="369" cy="157" r="27" fill="#00E5FF"/>
-    <circle cx="369" cy="157" r="11" fill="#071015"/>
-  </g>
+  <!-- wallet flap / top fold -->
+  <path d="M10 20v-3a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v3"
+    fill="#1a2a22" stroke="#00C8A8" stroke-width="1.6"/>
+
+  <!-- coin pocket -->
+  <rect x="32" y="27" width="14" height="9" rx="4.5"
+    fill="#111" stroke="#00C8A8" stroke-width="1.3"/>
+  <circle cx="39" cy="31.5" r="2.5" fill="#00C8A8"/>
+
+  <!-- water drop = the leak -->
+  <path d="M28 10c0 0-5 5-5 9a5 5 0 0 0 10 0c0-4-5-9-5-9z"
+    fill="#00c8ff"/>
+
+  <!-- cross on drop = sealed -->
+  <path d="M25.5 21.5l2.5-2.5 2.5 2.5"
+    stroke="#0d0d0d" stroke-width="1.5"
+    stroke-linecap="round" stroke-linejoin="round"/>
+
 </svg>
