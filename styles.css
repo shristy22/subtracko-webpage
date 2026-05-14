@@ -290,16 +290,16 @@ body::before {
 }
 
 .phone-card-back {
-  inset: 70px auto auto 12px;
-  width: 58%;
-  transform: rotate(-9deg);
-  opacity: 0.78;
+  inset: 80px auto auto 0;
+  width: 54%;
+  transform: rotate(-6deg);
+  opacity: 0.92;
   animation: driftBack 8s ease-in-out infinite;
 }
 
 .phone-card-front {
   inset: 0 0 auto auto;
-  width: 64%;
+  width: 60%;
   animation: driftFront 8s ease-in-out infinite;
 }
 
@@ -1116,12 +1116,12 @@ body:has(main.reset-page) {
   }
 
   .phone-card-back {
-    inset: 42px auto auto 0;
-    width: 56%;
+    inset: 50px auto auto 0;
+    width: 52%;
   }
 
   .phone-card-front {
-    width: 66%;
+    width: 60%;
   }
 
   .cta-panel {
