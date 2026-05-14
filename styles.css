@@ -1089,17 +1089,33 @@ body:has(main.reset-page) {
   }
 
   .story-copy,
-  .story-copy-compact,
+  .story-copy-compact {
+    width: 100%;
+    max-width: 100%;
+    padding: 22px 20px;
+  }
+
+  .story-shot-wrap {
+    width: min(76%, 280px);
+    margin: 0 auto;
+    perspective: none;
+  }
+
   .story-shot,
   .story-row-dashboard .story-shot,
   .dual-shot .story-shot {
     width: 100%;
     max-width: 100%;
+    box-sizing: border-box;
   }
 
-  .story-copy,
-  .story-copy-compact {
-    padding: 22px 20px;
+  .story-shot-float {
+    animation: none;
+    transform: none;
+  }
+
+  .story-shot:hover {
+    transform: none;
   }
 
   .story-shot-float img {
