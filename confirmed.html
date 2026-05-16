@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SubTracko Email Confirmed</title>
+    <meta
+      name="description"
+      content="Your SubTracko email has been confirmed."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="page-shell">
+        <div class="topbar-inner">
+          <a class="brand" href="./index.html" aria-label="SubTracko home">
+            <img class="brand-mark" src="./assets/brand/subtracko-mark.svg" alt="" aria-hidden="true" />
+            <span class="brand-text">SUB<span>TRACKO</span></span>
+          </a>
+          <nav class="topnav">
+            <a href="./index.html">Home</a>
+            <a href="./privacy.html">Privacy</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <div class="page-shell">
+      <main class="privacy-page confirm-page">
+        <section class="confirm-hero reveal">
+          <div class="confirm-hero-copy">
+            <h1>Email Confirmed!</h1>
+            <p>Your SubTracko account email has been successfully confirmed.</p>
+          </div>
+        </section>
+
+        <section class="confirm-shell reveal">
+          <section class="privacy-card confirm-card">
+            <div class="confirm-card-header">
+              <div id="confirm-header">✓</div>
+            </div>
+
+            <div id="confirm-status" class="confirm-status" role="status" aria-live="polite">
+              <p id="confirm-message" class="confirm-message">
+                Your email is confirmed. You can now log in to SubTracko.
+              </p>
+              <button id="open-app-button" class="button button-primary success-button">Open SubTracko App</button>
+            </div>
+          </section>
+        </section>
+      </main>
+    </div>
+
+    <footer class="footer">
+      <div class="page-shell">
+        <p>&copy; 2026 SubTracko. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById('open-app-button').addEventListener('click', function () {
+        var isAndroid = /Android/.test(navigator.userAgent);
+        var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+
+        if (isAndroid) {
+          var intentUrl = 'intent://host#Intent;scheme=subtracko;package=com.shristy.subtracko;action=android.intent.action.VIEW;end';
+          window.location.href = intentUrl;
+          setTimeout(function () {
+            window.location.href = 'https://play.google.com/store/apps/details?id=com.shristy.subtracko';
+          }, 2000);
+        } else if (isIOS) {
+          window.location.href = 'subtracko://';
+          setTimeout(function () {
+            window.location.href = 'https://apps.apple.com/app/subtracko/id1234567890';
+          }, 2000);
+        } else {
+          alert('Please open the SubTracko app on your phone to sign in.');
+        }
+      });
+    </script>
+  </body>
+</html>
