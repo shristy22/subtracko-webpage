@@ -104,10 +104,25 @@ body::before {
   font-family: "Arial Black", "Segoe UI", sans-serif;
   font-size: 1.45rem;
   letter-spacing: 0.08em;
+  white-space: nowrap;
 }
 
 .brand-text span {
   color: var(--accent);
+}
+
+@media (max-width: 640px) {
+  .brand-text {
+    font-size: 1.1rem;
+  }
+
+  .topnav {
+    gap: 16px;
+  }
+
+  .topnav a {
+    font-size: 0.85rem;
+  }
 }
 
 .topnav {
