@@ -33,7 +33,7 @@
           <p class="eyebrow">PRIVACY POLICY</p>
           <h1>Privacy Policy for SubTracko</h1>
           <p class="privacy-lead">
-            Last updated: April 30, 2026
+            Last updated: June 1, 2026
           </p>
           <p class="privacy-lead">
             This Privacy Policy explains how SubTracko collects, uses, stores, and shares
@@ -77,6 +77,23 @@
             name and the number of days remaining before renewal.
           </p>
 
+          <h3>Analytics data</h3>
+          <p>
+            SubTracko uses Mixpanel to collect usage analytics, including events such as
+            screens visited, features used, and in-app interactions. This data helps us understand
+            how the app is used and improve the product. Mixpanel may collect device type, operating
+            system version, app version, and a randomly generated device identifier. No payment
+            information or subscription amounts are sent to Mixpanel.
+          </p>
+
+          <h3>Crash and diagnostic data</h3>
+          <p>
+            SubTracko uses Sentry for crash reporting and error monitoring. When the app
+            experiences an error or crash, Sentry automatically collects diagnostic information
+            such as the error message, stack trace, device model, operating system version, and
+            app version. This data is used solely to identify and fix bugs.
+          </p>
+
           <h2>How we use your information</h2>
           <ul>
             <li>To create and manage your account.</li>
@@ -85,20 +102,24 @@
             <li>To show upcoming renewals and cancelled subscription history.</li>
             <li>To schedule local renewal reminders when you enable them.</li>
             <li>To maintain app reliability, security, and performance.</li>
+            <li>To analyse usage patterns and improve the app experience via Mixpanel.</li>
+            <li>To detect, diagnose, and fix crashes and errors via Sentry.</li>
           </ul>
 
           <h2>How your information is stored</h2>
           <p>
             SubTracko uses Supabase for authentication and cloud database storage. Session data and
             reminder preferences are also stored locally on your device to support sign-in
-            persistence and reminder settings.
+            persistence and reminder settings. Anonymised analytics events are stored by Mixpanel
+            and crash diagnostic data is stored by Sentry, each under their respective data
+            retention policies.
           </p>
 
           <h2>How we share information</h2>
           <p>SubTracko does not sell your personal information.</p>
           <p>Your information may be shared only in these limited situations:</p>
           <ul>
-            <li>With service providers that help operate the app, including Supabase.</li>
+            <li>With service providers that help operate the app, including Supabase (database and authentication), Mixpanel (analytics), and Sentry (crash reporting).</li>
             <li>When required by law, regulation, legal process, or government request.</li>
             <li>To protect the rights, safety, and security of the app, its users, or others.</li>
             <li>As part of a merger, acquisition, financing, or asset transfer.</li>
@@ -106,9 +127,17 @@
 
           <h2>Third-party services and links</h2>
           <p>
-            The app may open third-party cancellation pages or provider websites when you choose to
-            use its cancellation guidance features. Those third-party sites operate under their own
-            terms and privacy practices.
+            SubTracko integrates with the following third-party services:
+          </p>
+          <ul>
+            <li><strong>Supabase</strong> — authentication and cloud database storage.</li>
+            <li><strong>Mixpanel</strong> — anonymised usage analytics to help improve the app. See <a href="https://mixpanel.com/legal/privacy-policy/" target="_blank" rel="noopener noreferrer">Mixpanel's Privacy Policy</a>.</li>
+            <li><strong>Sentry</strong> — crash and error reporting to help identify and fix bugs. See <a href="https://sentry.io/privacy/" target="_blank" rel="noopener noreferrer">Sentry's Privacy Policy</a>.</li>
+          </ul>
+          <p>
+            The app may also open third-party cancellation pages or provider websites when you
+            choose to use its cancellation guidance features. Those third-party sites operate under
+            their own terms and privacy practices.
           </p>
 
           <h2>Data retention</h2>
