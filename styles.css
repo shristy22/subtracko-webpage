@@ -1319,18 +1319,33 @@ body:has(main.reset-page) {
 }
 
 .region-badges-wrap {
+  position: relative;
   margin-bottom: 22px;
 }
 
 .region-panels-wrap {
-  display: flex;
-  justify-content: center;
-  width: 100%;
   position: relative;
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding-top: 20px;
+}
+
+.region-panels-wrap::before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 50%;
+  width: 100%;
+  max-width: 64rem;
+  height: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, transparent, rgba(94, 252, 232, 0.18), transparent);
 }
 
 .region-panels {
-  width: min(56rem, 100%);
+  width: 100%;
+  margin: 0 auto;
 }
 
 .region-grid {
@@ -1340,6 +1355,10 @@ body:has(main.reset-page) {
   max-width: 100%;
   margin: 0 auto;
   justify-content: center;
+}
+
+.region-carousel-btn {
+  display: none;
 }
 
 @media (max-width: 1180px) {
@@ -1411,32 +1430,27 @@ body:has(main.reset-page) {
 
 .region-panel {
   position: relative;
-  border: 1px solid rgba(94, 252, 232, 0.14);
-  border-radius: 28px;
-  background:
-    linear-gradient(180deg, rgba(18, 26, 34, 0.96), rgba(10, 15, 20, 0.96)),
-    radial-gradient(circle at top, rgba(94, 252, 232, 0.08), transparent 55%);
-  box-shadow: var(--shadow);
-  width: min(56rem, 100%);
-  max-width: 56rem;
-  padding: 18px 18px 20px;
+  width: 100%;
+  max-width: 100%;
+  padding: 0;
   margin: 0 auto;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
 }
 
 .region-panel.is-open::before {
   content: "";
   position: absolute;
-  top: -8px;
+  top: -18px;
   left: var(--region-pointer-x, 50%);
-  width: 16px;
-  height: 16px;
-  background:
-    linear-gradient(180deg, rgba(18, 26, 34, 0.96), rgba(10, 15, 20, 0.96)),
-    radial-gradient(circle at top, rgba(94, 252, 232, 0.08), transparent 55%);
-  border-left: 1px solid rgba(94, 252, 232, 0.14);
-  border-top: 1px solid rgba(94, 252, 232, 0.14);
+  width: 12px;
+  height: 12px;
+  background: var(--accent);
+  opacity: 0.85;
   transform: translateX(-50%) rotate(45deg);
   transition: left 0.22s ease;
+  z-index: 1;
 }
 
 .region-panel-header {
@@ -1444,13 +1458,13 @@ body:has(main.reset-page) {
   align-items: center;
   justify-content: center;
   gap: 12px;
-  margin-bottom: 18px;
+  margin-bottom: 14px;
   text-align: center;
 }
 
 .region-panel-header img {
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   border-radius: 999px;
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.12);
   flex: 0 0 auto;
@@ -1475,7 +1489,9 @@ body:has(main.reset-page) {
   justify-content: center;
   gap: 10px;
   align-items: stretch;
-  padding: 2px 4px 0;
+  padding: 0;
+  max-width: 52rem;
+  margin: 0 auto;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -1529,14 +1545,69 @@ body:has(main.reset-page) {
   }
 
   .region-grid {
-    grid-template-columns: repeat(2, 10em);
-    gap: 8px;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 4px 2px 12px;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 20px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .region-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .region-badges-wrap {
+    padding: 0 2.5rem;
+  }
+
+  .region-carousel-btn {
+    display: inline-flex;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-56%);
+    width: 2rem;
+    height: 2rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    border: 1px solid rgba(94, 252, 232, 0.28);
+    background: rgba(10, 15, 20, 0.86);
+    color: var(--text);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.34);
+    z-index: 2;
+    cursor: pointer;
+    appearance: none;
+  }
+
+  .region-carousel-btn:disabled {
+    opacity: 0.3;
+    cursor: default;
+  }
+
+  .region-carousel-btn span {
+    font-size: 1.35rem;
+    line-height: 1;
+    transform: translateY(-1px);
+  }
+
+  .region-carousel-prev {
+    left: 0.25rem;
+  }
+
+  .region-carousel-next {
+    right: 0.25rem;
   }
 
   .region-badge {
     padding: 7px 9px 7px 7px;
     font-size: 0.64rem;
-    width: 10em;
+    width: clamp(8.25rem, 34vw, 10rem);
+    flex: 0 0 auto;
+    scroll-snap-align: center;
   }
 
   .region-badge img {
@@ -1545,15 +1616,17 @@ body:has(main.reset-page) {
   }
 
   .region-panel {
-    padding: 14px 14px 16px;
-    border-radius: 22px;
     width: 100%;
     max-width: 100%;
   }
 
+  .region-panel.is-open::before {
+    transition: none;
+  }
+
   .region-panel-header img {
-    width: 34px;
-    height: 34px;
+    width: 32px;
+    height: 32px;
   }
 
   .service-pill {
@@ -1665,16 +1738,20 @@ body:has(main.reset-page) {
 
 @media (max-width: 520px) {
   .region-grid {
-    grid-template-columns: 1fr;
     gap: 8px;
+    padding-inline: 4px;
   }
 
-  .region-services {
-    flex-wrap: nowrap;
-    overflow-x: auto;
+  .region-badges-wrap {
+    padding: 0 2.25rem;
+  }
+
+  .region-carousel-btn {
+    width: 1.8rem;
+    height: 1.8rem;
   }
 
   .region-badge {
-    width: 100%;
+    width: clamp(8rem, 72vw, 10rem);
   }
 }

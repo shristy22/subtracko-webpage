@@ -294,6 +294,9 @@
           </p>
           
           <div class="region-badges-wrap reveal">
+            <button class="region-carousel-btn region-carousel-prev" type="button" aria-label="Scroll countries left">
+              <span aria-hidden="true">‹</span>
+            </button>
             <div class="region-grid" aria-label="Country badges">
               <button class="region-badge is-active" type="button" data-region="india" aria-expanded="true" aria-controls="region-india">
                 <img src="./OurRealityCheckApp/assets/flags/INR.png" alt="" aria-hidden="true" />
@@ -324,6 +327,9 @@
                 <span>Brazil</span>
               </button>
             </div>
+            <button class="region-carousel-btn region-carousel-next" type="button" aria-label="Scroll countries right">
+              <span aria-hidden="true">›</span>
+            </button>
           </div>
 
           <div class="region-panels-wrap">
@@ -556,34 +562,75 @@
         var items = document.querySelectorAll('.region-item');
         var panels = document.querySelectorAll('.region-panel');
         var badgesWrap = document.querySelector('.region-badges-wrap');
+        var regionGrid = document.querySelector('.region-grid');
+        var carouselPrev = document.querySelector('.region-carousel-prev');
+        var carouselNext = document.querySelector('.region-carousel-next');
+        var badgeScrollTimeout = null;
         if (!badges.length || !panels.length) return;
+
+        function isMobileCarousel() {
+          return window.innerWidth <= 760;
+        }
+
+        function updateCarouselControls() {
+          if (!regionGrid || !carouselPrev || !carouselNext) return;
+          if (!isMobileCarousel()) {
+            carouselPrev.disabled = true;
+            carouselNext.disabled = true;
+            carouselPrev.setAttribute('aria-hidden', 'true');
+            carouselNext.setAttribute('aria-hidden', 'true');
+            return;
+          }
+
+          carouselPrev.removeAttribute('aria-hidden');
+          carouselNext.removeAttribute('aria-hidden');
+
+          var maxScrollLeft = Math.max(0, regionGrid.scrollWidth - regionGrid.clientWidth);
+          var scrollLeft = regionGrid.scrollLeft;
+          var atStart = scrollLeft <= 2;
+          var atEnd = scrollLeft >= maxScrollLeft - 2;
+          carouselPrev.disabled = atStart;
+          carouselNext.disabled = atEnd;
+        }
 
         function positionPanelFor(regionName) {
           var badge = document.querySelector('.region-badge[data-region="' + regionName + '"]');
           var panel = document.querySelector('.region-panel[data-panel="' + regionName + '"]');
-          if (!badge || !panel || !badgesWrap) return;
+          var panelsWrap = document.querySelector('.region-panels-wrap');
+          if (!badge || !panel || !badgesWrap || !panelsWrap) return;
 
           var badgeRect = badge.getBoundingClientRect();
-          var badgesRect = badgesWrap.getBoundingClientRect();
-          var panelRect = panel.getBoundingClientRect();
+          var wrapRect = panelsWrap.getBoundingClientRect();
           var viewportWidth = window.innerWidth;
           var inset = 24;
           if (viewportWidth <= 760) {
-            inset = 18;
+            inset = 16;
           } else if (viewportWidth <= 1180) {
-            inset = 22;
+            inset = 20;
           }
 
-          var badgeCenter = badgeRect.left + badgeRect.width / 2;
-          var panelRatio = panelRect.width / Math.max(1, badgesRect.width);
-          var pointerX = Math.round((badgeCenter - badgesRect.left) * panelRatio);
+          var pointerX = Math.round(badgeRect.left + badgeRect.width / 2 - wrapRect.left);
           var minX = inset;
-          var maxX = Math.max(minX, Math.round(panelRect.width - inset));
+          var maxX = Math.max(minX, Math.round(wrapRect.width - inset));
           pointerX = Math.max(minX, Math.min(maxX, pointerX));
           panel.style.setProperty('--region-pointer-x', pointerX + 'px');
         }
 
         function setActive(regionName) {
+          if (badgeScrollTimeout) {
+            clearTimeout(badgeScrollTimeout);
+            badgeScrollTimeout = null;
+          }
+
+          var activeBadgeForScroll = document.querySelector('.region-badge[data-region="' + regionName + '"]');
+          if (activeBadgeForScroll && isMobileCarousel()) {
+            activeBadgeForScroll.scrollIntoView({
+              behavior: 'auto',
+              block: 'nearest',
+              inline: 'center'
+            });
+          }
+
           badges.forEach(function (badge) {
             var isActive = badge.getAttribute('data-region') === regionName;
             badge.classList.toggle('is-active', isActive);
@@ -604,7 +651,35 @@
 
           window.requestAnimationFrame(function () {
             positionPanelFor(regionName);
+            updateCarouselControls();
           });
+
+          if (activeBadgeForScroll && isMobileCarousel()) {
+            badgeScrollTimeout = setTimeout(function () {
+              positionPanelFor(regionName);
+              updateCarouselControls();
+            }, 220);
+          }
+        }
+
+        if (regionGrid && carouselPrev && carouselNext) {
+          carouselPrev.addEventListener('click', function () {
+            if (!isMobileCarousel()) return;
+            regionGrid.scrollBy({ left: -Math.max(180, Math.round(regionGrid.clientWidth * 0.72)), behavior: 'auto' });
+            window.setTimeout(updateCarouselControls, 0);
+          });
+
+          carouselNext.addEventListener('click', function () {
+            if (!isMobileCarousel()) return;
+            regionGrid.scrollBy({ left: Math.max(180, Math.round(regionGrid.clientWidth * 0.72)), behavior: 'auto' });
+            window.setTimeout(updateCarouselControls, 0);
+          });
+
+          regionGrid.addEventListener('scroll', function () {
+            if (isMobileCarousel()) {
+              updateCarouselControls();
+            }
+          }, { passive: true });
         }
 
         badges.forEach(function (badge) {
@@ -617,10 +692,12 @@
           var activeBadge = document.querySelector('.region-badge.is-active');
           if (activeBadge) {
             positionPanelFor(activeBadge.getAttribute('data-region'));
+            updateCarouselControls();
           }
         });
 
         setActive('india');
+        updateCarouselControls();
       })();
     </script>
   </body>
