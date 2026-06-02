@@ -127,8 +127,10 @@ body::before {
 
 .topnav {
   display: flex;
+  align-items: center;
   gap: 24px;
   margin-left: auto;
+  flex-wrap: wrap;
 }
 
 .topnav a {
@@ -139,6 +141,21 @@ body::before {
 
 .topnav a:hover {
   color: var(--accent);
+}
+
+.topnav-cta {
+  padding: 12px 18px;
+  border: 1px solid rgba(94, 252, 232, 0.45);
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(94, 252, 232, 0.18), rgba(94, 252, 232, 0.08));
+  color: var(--text) !important;
+  box-shadow: 0 0 0 1px rgba(94, 252, 232, 0.08), 0 12px 24px rgba(0, 0, 0, 0.22);
+}
+
+.topnav-cta:hover {
+  color: #041116 !important;
+  background: var(--accent);
+  border-color: var(--accent);
 }
 
 .hero {
