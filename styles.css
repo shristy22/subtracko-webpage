@@ -167,6 +167,11 @@ body::before {
   flex: 0 0 auto;
   display: block;
 }
+.googleplay-icon {
+  width: 10em;
+  height: 3.5em;
+
+}
 
 .playstore-label {
   line-height: 1;
