@@ -1461,14 +1461,22 @@ body:has(main.reset-page) {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  flex-direction: column;
+  gap: 8px;
   margin-bottom: 16px;
   text-align: center;
 }
 
+.region-panel-title-row {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
 .region-panel-header img {
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
   border-radius: 999px;
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.12);
   flex: 0 0 auto;
@@ -1481,7 +1489,7 @@ body:has(main.reset-page) {
 }
 
 .region-panel-header p {
-  margin: 4px 0 0;
+  margin: 6px 0 0;
   color: var(--muted);
   line-height: 1.5;
   font-size: 0.78rem;
