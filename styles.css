@@ -392,17 +392,36 @@ body::before {
   margin: 0;
   border-radius: 36px;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  background: #111111;
+  background: transparent;
   box-shadow: 0 40px 90px rgba(0, 0, 0, 0.48);
 }
 
-.phone-card img {
+.phone-card img,
+.phone-card video {
   display: block;
   width: 100%;
-  height: auto;
   border: 7px solid rgba(255, 255, 255, 0.16);
   border-radius: 44px;
   box-sizing: border-box;
+}
+
+.phone-card-back {
+  aspect-ratio: 9 / 16;
+  border: 7px solid rgba(255, 255, 255, 0.16);
+  border-radius: 44px;
+}
+
+.phone-card-back video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: 0;
+  border-radius: inherit;
+  transform: scale(1.02);
+  transform-origin: center;
+  background: transparent;
 }
 
 .story-shot img {
@@ -1296,25 +1315,67 @@ body:has(main.reset-page) {
   text-align: center;
 }
 
-.region-badges {
+.region-badges-wrap {
+  margin-bottom: 18px;
+}
+
+.region-panels-wrap {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px;
-  max-width: 900px;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.region-panels {
+  /* width: min(44em, 100%); */
+}
+
+.region-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 7em);
+  gap: 8px;
+  max-width: 1180px;
   margin: 0 auto;
+  justify-content: center;
+}
+
+@media (max-width: 1180px) {
+  .region-grid {
+    grid-template-columns: repeat(4, 10em);
+    gap: 8px;
+  }
+}
+
+.region-item {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.region-item[data-region="australia"],
+.region-item[data-region="europe"],
+.region-item[data-region="brazil"] {
+  align-items: flex-end;
+}
+
+.region-item.is-active .region-panel {
+  border-color: rgba(94, 252, 232, 0.32);
 }
 
 .region-badge {
   display: inline-flex;
   align-items: center;
-  padding: 10px 18px;
+  gap: 8px;
+  width: 10em;
+  padding: 7px 10px 7px 8px;
   background: rgba(94, 252, 232, 0.08);
   border: 1px solid rgba(94, 252, 232, 0.24);
-  border-radius: 999px;
+  border-radius: 12px;
   color: var(--text);
-  font-size: 0.95rem;
+  font-size: 0.68rem;
   font-weight: 500;
+  font-family: "Arial Black", "Segoe UI", sans-serif;
+  cursor: pointer;
+  appearance: none;
   transition: all 0.3s ease;
 }
 
@@ -1323,6 +1384,140 @@ body:has(main.reset-page) {
   border-color: var(--accent);
   transform: translateY(-3px);
   box-shadow: 0 8px 20px rgba(94, 252, 232, 0.1);
+}
+
+.region-badge.is-active {
+  background: linear-gradient(180deg, rgba(94, 252, 232, 0.22), rgba(94, 252, 232, 0.12));
+  border-color: rgba(94, 252, 232, 0.7);
+  box-shadow: 0 16px 28px rgba(0, 0, 0, 0.28);
+}
+
+.region-badge img {
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  object-fit: cover;
+  display: block;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.12);
+}
+
+.region-badge span {
+  line-height: 1;
+}
+
+.region-panel {
+  position: relative;
+  border: 1px solid rgba(94, 252, 232, 0.14);
+  border-radius: 20px;
+  background: linear-gradient(180deg, rgba(16, 22, 29, 0.95), rgba(10, 15, 20, 0.95));
+  box-shadow: var(--shadow);
+  width: min(44em, 100%);
+  max-width: 44em;
+  padding: 10px;
+}
+
+.region-panel.is-open::before {
+  content: "";
+  position: absolute;
+  top: -7px;
+  left: 22px;
+  width: 14px;
+  height: 14px;
+  background: linear-gradient(180deg, rgba(16, 22, 29, 0.95), rgba(10, 15, 20, 0.95));
+  border-left: 1px solid rgba(94, 252, 232, 0.14);
+  border-top: 1px solid rgba(94, 252, 232, 0.14);
+  transform: rotate(45deg);
+}
+
+.region-panel-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.region-panel-header img {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.12);
+  flex: 0 0 auto;
+}
+
+.region-panel-header h3 {
+  margin: 0;
+  font-family: "Arial Black", "Segoe UI", sans-serif;
+  font-size: 0.95rem;
+}
+
+.region-panel-header p {
+  margin: 4px 0 0;
+  color: var(--muted);
+  line-height: 1.5;
+  font-size: 0.78rem;
+}
+
+.region-panel[data-panel="australia"] .region-panel-header,
+.region-panel[data-panel="europe"] .region-panel-header,
+.region-panel[data-panel="brazil"] .region-panel-header {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+.region-panel[data-panel="australia"] .region-services,
+.region-panel[data-panel="europe"] .region-services,
+.region-panel[data-panel="brazil"] .region-services {
+  justify-content: flex-end;
+}
+
+.region-panel[data-panel="australia"] .region-panel.is-open::before,
+.region-panel[data-panel="europe"] .region-panel.is-open::before,
+.region-panel[data-panel="brazil"] .region-panel.is-open::before {
+  left: auto;
+  right: 22px;
+}
+
+.region-panel[data-panel="australia"],
+.region-panel[data-panel="europe"],
+.region-panel[data-panel="brazil"] {
+  margin-right: auto;
+  margin-left: 0;
+}
+
+.region-services {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 8px;
+  align-items: center;
+  padding: 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.service-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  flex: 0 0 auto;
+  min-height: 36px;
+  padding: 0 10px 0 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(94, 252, 232, 0.16);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text);
+  font-size: 0.74rem;
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+.service-logo {
+  width: 24px;
+  height: 24px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex: 0 0 auto;
 }
 
 @media (max-width: 760px) {
@@ -1344,6 +1539,49 @@ body:has(main.reset-page) {
   .topnav {
     flex-wrap: wrap;
     gap: 14px;
+  }
+
+  .region-grid {
+    grid-template-columns: repeat(2, 10em);
+    gap: 8px;
+  }
+
+  .region-badge {
+    padding: 7px 9px 7px 7px;
+    font-size: 0.64rem;
+    width: 10em;
+  }
+
+  .region-badge img {
+    width: 15px;
+    height: 15px;
+  }
+
+  .region-panel {
+    padding: 10px;
+    border-radius: 18px;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .region-panel-header img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .service-pill {
+    min-height: 34px;
+    padding: 0 9px 0 7px;
+    font-size: 0.66rem;
+  }
+
+  .service-logo {
+    width: 20px;
+    height: 20px;
+  }
+
+  .region-services {
+    gap: 8px;
   }
 
   .hero-stats,
@@ -1396,17 +1634,21 @@ body:has(main.reset-page) {
   }
 
   .phone-stack {
-    min-height: 520px;
+    min-height: 550px;
   }
 
   .phone-card-back {
     inset: 0 0 auto auto;
-    width: 60%;
+    width: 80%;
   }
 
   .phone-card img {
     border: 5px solid rgba(255, 255, 255, 0.16);
     border-radius: 44px;
+  }
+
+  .phone-card-back video {
+    transform: scale(1.02);
   }
 
   .cta-panel {
@@ -1431,5 +1673,21 @@ body:has(main.reset-page) {
     flex-direction: column;
     align-items: flex-start;
     padding-bottom: 28px;
+  }
+}
+
+@media (max-width: 520px) {
+  .region-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .region-services {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+
+  .region-badge {
+    width: 100%;
   }
 }
