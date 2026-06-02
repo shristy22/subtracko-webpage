@@ -1,0 +1,29 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="128" height="128" rx="28" fill="#000000"/>
+  <defs>
+    <!-- 3D gradient: bright white top-left fading to mid-gray bottom -->
+    <linearGradient id="pg" x1="12" y1="14" x2="55" y2="114" gradientUnits="userSpaceOnUse">
+      <stop offset="0%"   stop-color="#FFFFFF"/>
+      <stop offset="40%"  stop-color="#DCDCDC"/>
+      <stop offset="100%" stop-color="#848484"/>
+    </linearGradient>
+  </defs>
+
+  <!--
+    P letter silhouette (evenodd = inner D-hole punched out).
+    Outer: left stem + bowl arc sweeping right to x=72
+    Inner: smaller D-shape (the counter / bowl hole)
+  -->
+  <path fill-rule="evenodd"
+    d="M 12 114 V 14 H 36 A 36 36 0 0 1 36 86 V 114 H 12 Z
+       M 36 30 A 20 20 0 0 1 36 70 Z"
+    fill="url(#pg)"/>
+
+  <!-- 6 colored dots: yellow → orange → red → purple → blue → green -->
+  <circle cx="98" cy="20"  r="10" fill="#FFD100"/>
+  <circle cx="98" cy="37"  r="10" fill="#F77F00"/>
+  <circle cx="98" cy="54"  r="10" fill="#E4003A"/>
+  <circle cx="98" cy="71"  r="10" fill="#7B2FBE"/>
+  <circle cx="98" cy="88"  r="10" fill="#00A8E0"/>
+  <circle cx="98" cy="105" r="10" fill="#00B14A"/>
+</svg>

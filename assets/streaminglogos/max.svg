@@ -1,0 +1,38 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="silverGrad" x1="0" y1="0" x2="0" y2="128" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="50%" stop-color="#E0E8F0"/>
+      <stop offset="100%" stop-color="#8AABB8"/>
+    </linearGradient>
+    <radialGradient id="sphereGrad" cx="38%" cy="30%" r="55%" fx="38%" fy="30%">
+      <stop offset="0%" stop-color="#D0E4F0"/>
+      <stop offset="55%" stop-color="#8FAFC0"/>
+      <stop offset="100%" stop-color="#4A6A80"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Black background -->
+  <rect width="128" height="128" rx="28" fill="#000000"/>
+
+  <!-- H -->
+  <rect x="10" y="22" width="9" height="42" fill="url(#silverGrad)"/>
+  <rect x="10" y="39" width="28" height="8" fill="url(#silverGrad)"/>
+  <rect x="29" y="22" width="9" height="42" fill="url(#silverGrad)"/>
+
+  <!-- B -->
+  <rect x="44" y="22" width="8" height="42" fill="url(#silverGrad)"/>
+  <path d="M52 22 Q70 22 70 31 Q70 40 52 40 Z" fill="url(#silverGrad)"/>
+  <path d="M52 40 Q73 40 73 52 Q73 64 52 64 Z" fill="url(#silverGrad)"/>
+  <rect x="52" y="22" width="3" height="42" fill="url(#silverGrad)"/>
+
+  <!-- O (sphere) -->
+  <circle cx="100" cy="43" r="22" fill="url(#sphereGrad)"/>
+  <circle cx="100" cy="43" r="14" fill="#000000"/>
+  <circle cx="96" cy="39" r="4" fill="#2A4A60" opacity="0.6"/>
+
+  <!-- max text -->
+  <text x="64" y="108" text-anchor="middle" fill="url(#silverGrad)"
+    font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"
+    font-size="38" font-weight="700" letter-spacing="-1">max</text>
+</svg>

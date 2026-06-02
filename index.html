@@ -63,7 +63,7 @@
               <a class="button button-primary" href="#screens">See the damage</a>
               <a class="button button-secondary" href="#features">How it works</a>
               <a
-                class="button button-primary playstore-button"
+                class="button button-secondary playstore-button"
                 href="https://play.google.com/store/apps/details?id=com.shristy.subtracko"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -92,10 +92,14 @@
           <div class="hero-visual reveal">
             <div class="phone-stack">
               <figure class="phone-card phone-card-back">
-                <img
-                  src="./assets/screens/landing.jpg"
-                  alt="SubTracko landing screen warning users they may be overspending on subscriptions."
-                />
+                <video
+                  src="./assets/screens/landing-screen-video.mp4"
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                  aria-label="SubTracko landing screen video warning users they may be overspending on subscriptions."
+                ></video>
               </figure>
               <figure class="phone-card phone-card-front">
                 <img
@@ -289,14 +293,167 @@
             SubTracko tracks 100+ subscription services. Browse suggestions for your region, or discover apps and services from other countries. You add the prices.
           </p>
           
-          <div class="region-badges reveal">
-            <span class="region-badge">🇺🇸 US</span>
-            <span class="region-badge">🇬🇧 UK</span>
-            <span class="region-badge">🇮🇳 India</span>
-            <span class="region-badge">🇨🇦 Canada</span>
-            <span class="region-badge">🇦🇺 Australia</span>
-            <span class="region-badge">🇪🇺 Europe</span>
-            <span class="region-badge">🇧🇷 Brazil</span>
+          <div class="region-badges-wrap reveal">
+            <button class="region-carousel-btn region-carousel-prev" type="button" aria-label="Scroll countries left">
+              <span aria-hidden="true">‹</span>
+            </button>
+            <div class="region-grid" aria-label="Country badges">
+              <button class="region-badge is-active" type="button" data-region="india" aria-expanded="true" aria-controls="region-india">
+                <img src="./assets/flags/INR.png" alt="" aria-hidden="true" />
+                <span>India</span>
+              </button>
+              <button class="region-badge" type="button" data-region="us" aria-expanded="false" aria-controls="region-us">
+                <img src="./assets/flags/USD.png" alt="" aria-hidden="true" />
+                <span>US</span>
+              </button>
+              <button class="region-badge" type="button" data-region="uk" aria-expanded="false" aria-controls="region-uk">
+                <img src="./assets/flags/GBP.png" alt="" aria-hidden="true" />
+                <span>UK</span>
+              </button>
+              <button class="region-badge" type="button" data-region="canada" aria-expanded="false" aria-controls="region-canada">
+                <img src="./assets/flags/CAD.png" alt="" aria-hidden="true" />
+                <span>Canada</span>
+              </button>
+              <button class="region-badge" type="button" data-region="australia" aria-expanded="false" aria-controls="region-australia">
+                <img src="./assets/flags/AUD.png" alt="" aria-hidden="true" />
+                <span>Australia</span>
+              </button>
+              <button class="region-badge" type="button" data-region="europe" aria-expanded="false" aria-controls="region-europe">
+                <img src="./assets/flags/EUR.png" alt="" aria-hidden="true" />
+                <span>Europe</span>
+              </button>
+              <button class="region-badge" type="button" data-region="brazil" aria-expanded="false" aria-controls="region-brazil">
+                <img src="./assets/flags/BRL.png" alt="" aria-hidden="true" />
+                <span>Brazil</span>
+              </button>
+            </div>
+            <div class="region-caret" aria-hidden="true"></div>
+            <button class="region-carousel-btn region-carousel-next" type="button" aria-label="Scroll countries right">
+              <span aria-hidden="true">›</span>
+            </button>
+          </div>
+
+          <div class="region-panels-wrap">
+            <div class="region-panels" aria-live="polite">
+              <div class="region-panel is-open" id="region-india" data-panel="india">
+                <div class="region-panel-header">
+                  <div class="region-panel-title-row">
+                    <img src="./assets/flags/INR.png" alt="" aria-hidden="true" />
+                    <h3>India</h3>
+                  </div>
+                  <p>Popular services people track across India.</p>
+                </div>
+                <div class="region-services">
+                  <span class="service-pill"><img class="service-logo" src="./assets/streaminglogos/hotstar.svg" alt="" aria-hidden="true" /><span>Hotstar</span></span>
+                  <span class="service-pill"><img class="service-logo" src="./assets/streaminglogos/zee5.svg" alt="" aria-hidden="true" /><span>ZEE5</span></span>
+                  <span class="service-pill"><img class="service-logo" src="./assets/streaminglogos/sonyliv.png" alt="" aria-hidden="true" /><span>SonyLIV</span></span>
+                  <span class="service-pill"><img class="service-logo" src="./assets/streaminglogos/jiocinema.png" alt="" aria-hidden="true" /><span>JioCinema</span></span>
+                  <span class="service-pill"><img class="service-logo" src="./assets/streaminglogos/prime.svg" alt="" aria-hidden="true" /><span>Prime Video</span></span>
+                </div>
+              </div>
+
+              <div class="region-panel" id="region-us" data-panel="us" hidden>
+                <div class="region-panel-header">
+                  <div class="region-panel-title-row">
+                    <img src="./assets/flags/USD.png" alt="" aria-hidden="true" />
+                    <h3>US</h3>
+                  </div>
+                  <p>High-demand streaming and productivity subscriptions in the US.</p>
+                </div>
+                <div class="region-services">
+                  <span class="service-pill"><img class="service-logo" src="./assets/streaminglogos/netflix.svg" alt="" aria-hidden="true" /><span>Netflix</span></span>
+                  <span class="service-pill"><img class="service-logo" src="./assets/streaminglogos/hulu.svg" alt="" aria-hidden="true" /><span>Hulu</span></span>
+                  <span class="service-pill"><img class="service-logo" src="./assets/streaminglogos/max.svg" alt="" aria-hidden="true" /><span>Max</span></span>
+                  <span class="service-pill"><img class="service-logo" src="./assets/streaminglogos/peacock.svg" alt="" aria-hidden="true" /><span>Peacock</span></span>
+                  <span class="service-pill"><img class="service-logo" src="./assets/streaminglogos/paramount.svg" alt="" aria-hidden="true" /><span>Paramount+</span></span>
+                </div>
+              </div>
+
+              <div class="region-panel" id="region-uk" data-panel="uk" hidden>
+                <div class="region-panel-header">
+                  <div class="region-panel-title-row">
+                    <img src="./assets/flags/GBP.png" alt="" aria-hidden="true" />
+                    <h3>UK</h3>
+                  </div>
+                  <p>Popular UK services for entertainment and catch-up TV.</p>
+                </div>
+                <div class="region-services">
+                  <span class="service-pill"><img class="service-logo" src="./assets/streaminglogos/netflix.svg" alt="" aria-hidden="true" /><span>Netflix</span></span>
+                  <span class="service-pill"><img class="service-logo" src="./assets/streaminglogos/prime.svg" alt="" aria-hidden="true" /><span>Prime Video</span></span>
+                  <span class="service-pill"><img class="service-logo" src="./assets/streaminglogos/mubi.svg" alt="" aria-hidden="true" /><span>MUBI</span></span>
+                  <span class="service-pill"><img class="service-logo" src="./assets/streaminglogos/spotify.svg" alt="" aria-hidden="true" /><span>Spotify</span></span>
+                  <span class="service-pill"><img class="service-logo" src="./assets/streaminglogos/youtubepremium.svg" alt="" aria-hidden="true" /><span>YouTube Premium</span></span>
+                </div>
+              </div>
+
+              <div class="region-panel" id="region-canada" data-panel="canada" hidden>
+                <div class="region-panel-header">
+                  <div class="region-panel-title-row">
+                    <img src="./assets/flags/CAD.png" alt="" aria-hidden="true" />
+                    <h3>Canada</h3>
+                  </div>
+                  <p>Common Canadian streaming and live TV picks.</p>
+                </div>
+                <div class="region-services">
+                  <span class="service-pill"><img class="service-logo" src="./assets/streaminglogos/crave.svg" alt="" aria-hidden="true" /><span>Crave</span></span>
+                  <span class="service-pill"><img class="service-logo" src="./assets/streaminglogos/cbcgem.svg" alt="" aria-hidden="true" /><span>CBC Gem</span></span>
+                  <span class="service-pill"><img class="service-logo" src="./assets/streaminglogos/netflix.svg" alt="" aria-hidden="true" /><span>Netflix</span></span>
+                  <span class="service-pill"><img class="service-logo" src="./assets/streaminglogos/prime.svg" alt="" aria-hidden="true" /><span>Prime Video</span></span>
+                  <span class="service-pill"><img class="service-logo" src="./assets/streaminglogos/paramount.svg" alt="" aria-hidden="true" /><span>Paramount+</span></span>
+                </div>
+              </div>
+
+              <div class="region-panel" id="region-australia" data-panel="australia" hidden>
+                <div class="region-panel-header">
+                  <div class="region-panel-title-row">
+                    <img src="./assets/flags/AUD.png" alt="" aria-hidden="true" />
+                    <h3>Australia</h3>
+                  </div>
+                  <p>Streaming and sports services tracked by Australian users.</p>
+                </div>
+                <div class="region-services">
+                  <span class="service-pill"><img class="service-logo" src="./assets/streaminglogos/stan.svg" alt="" aria-hidden="true" /><span>Stan</span></span>
+                  <span class="service-pill"><img class="service-logo" src="./assets/streaminglogos/binge.svg" alt="" aria-hidden="true" /><span>BINGE</span></span>
+                  <span class="service-pill"><img class="service-logo" src="./assets/streaminglogos/kayosports.svg" alt="" aria-hidden="true" /><span>Kayo Sports</span></span>
+                  <span class="service-pill"><img class="service-logo" src="./assets/streaminglogos/netflix.svg" alt="" aria-hidden="true" /><span>Netflix</span></span>
+                  <span class="service-pill"><img class="service-logo" src="./assets/streaminglogos/prime.svg" alt="" aria-hidden="true" /><span>Prime Video</span></span>
+                </div>
+              </div>
+
+              <div class="region-panel" id="region-europe" data-panel="europe" hidden>
+                <div class="region-panel-header">
+                  <div class="region-panel-title-row">
+                    <img src="./assets/flags/EUR.png" alt="" aria-hidden="true" />
+                    <h3>Europe</h3>
+                  </div>
+                  <p>Cross-border services often tracked across Europe.</p>
+                </div>
+                <div class="region-services">
+                  <span class="service-pill"><img class="service-logo" src="./assets/streaminglogos/canalplus.svg" alt="" aria-hidden="true" /><span>Canal+</span></span>
+                  <span class="service-pill"><img class="service-logo" src="./assets/streaminglogos/rtlplus.svg" alt="" aria-hidden="true" /><span>RTL+</span></span>
+                  <span class="service-pill"><img class="service-logo" src="./assets/streaminglogos/mubi.svg" alt="" aria-hidden="true" /><span>MUBI</span></span>
+                  <span class="service-pill"><img class="service-logo" src="./assets/streaminglogos/urbansportsclub.svg" alt="" aria-hidden="true" /><span>Urban Sports Club</span></span>
+                  <span class="service-pill"><img class="service-logo" src="./assets/streaminglogos/netflix.svg" alt="" aria-hidden="true" /><span>Netflix</span></span>
+                </div>
+              </div>
+
+              <div class="region-panel" id="region-brazil" data-panel="brazil" hidden>
+                <div class="region-panel-header">
+                  <div class="region-panel-title-row">
+                    <img src="./assets/flags/BRL.png" alt="" aria-hidden="true" />
+                    <h3>Brazil</h3>
+                  </div>
+                  <p>Popular Brazilian subscriptions and entertainment services.</p>
+                </div>
+                <div class="region-services">
+                  <span class="service-pill"><img class="service-logo" src="./assets/streaminglogos/spotify.svg" alt="" aria-hidden="true" /><span>Spotify</span></span>
+                  <span class="service-pill"><img class="service-logo" src="./assets/streaminglogos/deezer.svg" alt="" aria-hidden="true" /><span>Deezer</span></span>
+                  <span class="service-pill"><img class="service-logo" src="./assets/streaminglogos/amazonmusic.svg" alt="" aria-hidden="true" /><span>Amazon Music</span></span>
+                  <span class="service-pill"><img class="service-logo" src="./assets/streaminglogos/youtubepremium.svg" alt="" aria-hidden="true" /><span>YouTube Premium</span></span>
+                  <span class="service-pill"><img class="service-logo" src="./assets/streaminglogos/mubi.svg" alt="" aria-hidden="true" /><span>MUBI</span></span>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -399,6 +556,151 @@
 
         // Also run immediately in case script is injected late
         setTimeout(matchDashboardImages, 200);
+      })();
+
+      (function () {
+        var badges = document.querySelectorAll('.region-badge');
+        var items = document.querySelectorAll('.region-item');
+        var panels = document.querySelectorAll('.region-panel');
+        var badgesWrap = document.querySelector('.region-badges-wrap');
+        var regionGrid = document.querySelector('.region-grid');
+        var carouselPrev = document.querySelector('.region-carousel-prev');
+        var carouselNext = document.querySelector('.region-carousel-next');
+        var badgeScrollTimeout = null;
+        var activeRegionName = 'india';
+        if (!badges.length || !panels.length) return;
+
+        function isMobileCarousel() {
+          return window.innerWidth <= 760;
+        }
+
+        function updateCarouselControls() {
+          if (!regionGrid || !carouselPrev || !carouselNext) return;
+          if (!isMobileCarousel()) {
+            carouselPrev.disabled = true;
+            carouselNext.disabled = true;
+            carouselPrev.setAttribute('aria-hidden', 'true');
+            carouselNext.setAttribute('aria-hidden', 'true');
+            return;
+          }
+
+          carouselPrev.removeAttribute('aria-hidden');
+          carouselNext.removeAttribute('aria-hidden');
+
+          var maxScrollLeft = Math.max(0, regionGrid.scrollWidth - regionGrid.clientWidth);
+          var scrollLeft = regionGrid.scrollLeft;
+          var atStart = scrollLeft <= 2;
+          var atEnd = scrollLeft >= maxScrollLeft - 2;
+          carouselPrev.disabled = atStart;
+          carouselNext.disabled = atEnd;
+        }
+
+        function positionPanelFor(regionName) {
+          var badge = document.querySelector('.region-badge[data-region="' + regionName + '"]');
+          var caret = document.querySelector('.region-caret');
+          if (!badge || !caret || !badgesWrap || !regionGrid) return;
+
+          var badgeRect = badge.getBoundingClientRect();
+          var wrapRect = badgesWrap.getBoundingClientRect();
+          var pointerX = Math.round(badgeRect.left + badgeRect.width / 2 - wrapRect.left);
+          var minX = 20;
+          var maxX = Math.max(minX, Math.round(wrapRect.width - 20));
+          pointerX = Math.max(minX, Math.min(maxX, pointerX));
+          caret.style.left = pointerX + 'px';
+        }
+
+        function setActive(regionName) {
+          activeRegionName = regionName;
+
+          if (badgeScrollTimeout) {
+            clearTimeout(badgeScrollTimeout);
+            badgeScrollTimeout = null;
+          }
+
+          var activeBadgeForScroll = document.querySelector('.region-badge[data-region="' + regionName + '"]');
+          if (activeBadgeForScroll && isMobileCarousel()) {
+            activeBadgeForScroll.scrollIntoView({
+              behavior: 'auto',
+              block: 'nearest',
+              inline: 'center'
+            });
+          }
+
+          badges.forEach(function (badge) {
+            var isActive = badge.getAttribute('data-region') === regionName;
+            badge.classList.toggle('is-active', isActive);
+            badge.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+          });
+
+          items.forEach(function (item) {
+            var button = item.querySelector('.region-badge');
+            var isActiveItem = button && button.getAttribute('data-region') === regionName;
+            item.classList.toggle('is-active', isActiveItem);
+          });
+
+          panels.forEach(function (panel) {
+            var isMatch = panel.getAttribute('data-panel') === regionName;
+            panel.classList.toggle('is-open', isMatch);
+            panel.hidden = !isMatch;
+          });
+
+          window.requestAnimationFrame(function () {
+            positionPanelFor(regionName);
+            updateCarouselControls();
+          });
+
+          if (activeBadgeForScroll && isMobileCarousel()) {
+            badgeScrollTimeout = setTimeout(function () {
+              positionPanelFor(regionName);
+              updateCarouselControls();
+            }, 220);
+          }
+        }
+
+        if (regionGrid && carouselPrev && carouselNext) {
+          carouselPrev.addEventListener('click', function () {
+            if (!isMobileCarousel()) return;
+            regionGrid.scrollBy({ left: -Math.max(180, Math.round(regionGrid.clientWidth * 0.72)), behavior: 'auto' });
+            window.setTimeout(updateCarouselControls, 0);
+          });
+
+          carouselNext.addEventListener('click', function () {
+            if (!isMobileCarousel()) return;
+            regionGrid.scrollBy({ left: Math.max(180, Math.round(regionGrid.clientWidth * 0.72)), behavior: 'auto' });
+            window.setTimeout(updateCarouselControls, 0);
+          });
+
+          regionGrid.addEventListener('scroll', function () {
+            if (isMobileCarousel()) {
+              updateCarouselControls();
+              if (badgeScrollTimeout) {
+                clearTimeout(badgeScrollTimeout);
+              }
+              badgeScrollTimeout = setTimeout(function () {
+                positionPanelFor(activeRegionName);
+                updateCarouselControls();
+              }, 80);
+            }
+          }, { passive: true });
+        }
+
+        badges.forEach(function (badge) {
+          badge.addEventListener('click', function () {
+            setActive(badge.getAttribute('data-region'));
+          });
+        });
+
+        window.addEventListener('resize', function () {
+          var activeBadge = document.querySelector('.region-badge.is-active');
+          if (activeBadge) {
+            positionPanelFor(activeBadge.getAttribute('data-region'));
+            updateCarouselControls();
+          }
+        });
+
+        setActive('india');
+        updateCarouselControls();
+        positionPanelFor(activeRegionName);
       })();
     </script>
   </body>
