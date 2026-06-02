@@ -144,6 +144,9 @@ body::before {
 }
 
 .topnav-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   padding: 12px 18px;
   border: 1px solid rgba(94, 252, 232, 0.45);
   border-radius: 999px;
@@ -156,6 +159,27 @@ body::before {
   color: #041116 !important;
   background: var(--accent);
   border-color: var(--accent);
+}
+
+.playstore-icon {
+  width: 1.05em;
+  height: 1.05em;
+  flex: 0 0 auto;
+  display: block;
+}
+
+.playstore-label {
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.playstore-button {
+  gap: 12px;
+  text-transform: none;
+}
+
+.playstore-button .playstore-label {
+  letter-spacing: 0.04em;
 }
 
 .hero {
@@ -221,9 +245,14 @@ body::before {
 
 .hero-actions {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 16px;
   margin-top: 30px;
+  width: 100%;
+}
+
+.hero-actions > * {
+  flex: 0 0 auto;
 }
 
 .button {
@@ -253,6 +282,54 @@ body::before {
   border: 1px solid rgba(255, 255, 255, 0.12);
   color: var(--text);
   background: rgba(255, 255, 255, 0.03);
+}
+
+@media (max-width: 900px) {
+  .hero-actions {
+    gap: 8px;
+  }
+
+  .hero-actions > * {
+    flex: 0 1 auto;
+    min-width: 0;
+  }
+
+  .hero-actions .button {
+    min-height: 46px;
+    padding: 0 12px;
+    font-size: 0.64rem;
+    letter-spacing: 0.03em;
+  }
+
+  .playstore-button {
+    gap: 6px;
+  }
+
+  .playstore-icon {
+    width: 0.9em;
+    height: 0.9em;
+  }
+}
+
+@media (max-width: 560px) {
+  .hero-actions {
+    gap: 6px;
+  }
+
+  .hero-actions .button {
+    min-height: 42px;
+    padding: 0 9px;
+    font-size: 0.56rem;
+    letter-spacing: 0.02em;
+  }
+
+  .playstore-button {
+    gap: 5px;
+  }
+
+  .playstore-label {
+    letter-spacing: 0.01em;
+  }
 }
 
 .hero-stats {
