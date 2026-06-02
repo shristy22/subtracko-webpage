@@ -566,6 +566,7 @@
         var carouselPrev = document.querySelector('.region-carousel-prev');
         var carouselNext = document.querySelector('.region-carousel-next');
         var badgeScrollTimeout = null;
+        var activeRegionName = 'india';
         if (!badges.length || !panels.length) return;
 
         function isMobileCarousel() {
@@ -596,11 +597,10 @@
         function positionPanelFor(regionName) {
           var badge = document.querySelector('.region-badge[data-region="' + regionName + '"]');
           var panel = document.querySelector('.region-panel[data-panel="' + regionName + '"]');
-          var panelsWrap = document.querySelector('.region-panels-wrap');
-          if (!badge || !panel || !badgesWrap || !panelsWrap) return;
+          if (!badge || !panel || !badgesWrap || !regionGrid) return;
 
           var badgeRect = badge.getBoundingClientRect();
-          var wrapRect = panelsWrap.getBoundingClientRect();
+          var panelRect = panel.getBoundingClientRect();
           var viewportWidth = window.innerWidth;
           var inset = 24;
           if (viewportWidth <= 760) {
@@ -609,14 +609,16 @@
             inset = 20;
           }
 
-          var pointerX = Math.round(badgeRect.left + badgeRect.width / 2 - wrapRect.left);
+          var pointerX = Math.round(badgeRect.left + badgeRect.width / 2 - panelRect.left);
           var minX = inset;
-          var maxX = Math.max(minX, Math.round(wrapRect.width - inset));
+          var maxX = Math.max(minX, Math.round(panelRect.width - inset));
           pointerX = Math.max(minX, Math.min(maxX, pointerX));
           panel.style.setProperty('--region-pointer-x', pointerX + 'px');
         }
 
         function setActive(regionName) {
+          activeRegionName = regionName;
+
           if (badgeScrollTimeout) {
             clearTimeout(badgeScrollTimeout);
             badgeScrollTimeout = null;
@@ -678,6 +680,13 @@
           regionGrid.addEventListener('scroll', function () {
             if (isMobileCarousel()) {
               updateCarouselControls();
+              if (badgeScrollTimeout) {
+                clearTimeout(badgeScrollTimeout);
+              }
+              badgeScrollTimeout = setTimeout(function () {
+                positionPanelFor(activeRegionName);
+                updateCarouselControls();
+              }, 80);
             }
           }, { passive: true });
         }
@@ -698,6 +707,7 @@
 
         setActive('india');
         updateCarouselControls();
+        positionPanelFor(activeRegionName);
       })();
     </script>
   </body>
