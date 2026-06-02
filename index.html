@@ -327,6 +327,7 @@
                 <span>Brazil</span>
               </button>
             </div>
+            <div class="region-caret" aria-hidden="true"></div>
             <button class="region-carousel-btn region-carousel-next" type="button" aria-label="Scroll countries right">
               <span aria-hidden="true">›</span>
             </button>
@@ -596,24 +597,16 @@
 
         function positionPanelFor(regionName) {
           var badge = document.querySelector('.region-badge[data-region="' + regionName + '"]');
-          var panel = document.querySelector('.region-panel[data-panel="' + regionName + '"]');
-          if (!badge || !panel || !badgesWrap || !regionGrid) return;
+          var caret = document.querySelector('.region-caret');
+          if (!badge || !caret || !badgesWrap || !regionGrid) return;
 
           var badgeRect = badge.getBoundingClientRect();
-          var panelRect = panel.getBoundingClientRect();
-          var viewportWidth = window.innerWidth;
-          var inset = 24;
-          if (viewportWidth <= 760) {
-            inset = 16;
-          } else if (viewportWidth <= 1180) {
-            inset = 20;
-          }
-
-          var pointerX = Math.round(badgeRect.left + badgeRect.width / 2 - panelRect.left);
-          var minX = inset;
-          var maxX = Math.max(minX, Math.round(panelRect.width - inset));
+          var wrapRect = badgesWrap.getBoundingClientRect();
+          var pointerX = Math.round(badgeRect.left + badgeRect.width / 2 - wrapRect.left);
+          var minX = 20;
+          var maxX = Math.max(minX, Math.round(wrapRect.width - 20));
           pointerX = Math.max(minX, Math.min(maxX, pointerX));
-          panel.style.setProperty('--region-pointer-x', pointerX + 'px');
+          caret.style.left = pointerX + 'px';
         }
 
         function setActive(regionName) {
