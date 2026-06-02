@@ -1,0 +1,17 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="2" y="44" width="33" height="40" fill="#E020D8"/>
+  <rect x="39" y="44" width="33" height="40" fill="#6600CC"/>
+  <rect x="76" y="44" width="33" height="40" fill="#00B830"/>
+  <text x="18.5" y="72" text-anchor="middle" fill="#FFFFFF"
+    font-family="'Arial', 'Helvetica Neue', sans-serif"
+    font-size="22" font-weight="700">R</text>
+  <text x="55.5" y="72" text-anchor="middle" fill="#FFFFFF"
+    font-family="'Arial', 'Helvetica Neue', sans-serif"
+    font-size="22" font-weight="700">T</text>
+  <text x="92.5" y="72" text-anchor="middle" fill="#FFFFFF"
+    font-family="'Arial', 'Helvetica Neue', sans-serif"
+    font-size="22" font-weight="700">L</text>
+  <text x="118" y="74" text-anchor="middle" fill="#000000"
+    font-family="'Arial', 'Helvetica Neue', sans-serif"
+    font-size="26" font-weight="700">+</text>
+</svg>
