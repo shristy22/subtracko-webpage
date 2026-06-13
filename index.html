@@ -135,6 +135,13 @@
           </article>
           <article class="feature-card reveal">
             <p class="card-index">03</p>
+            <h2>AI Receipt Upload</h2>
+            <p>
+              Snap a payment confirmation email. AI reads the service, amount, and billing cycle — and adds the subscription instantly. Free.
+            </p>
+          </article>
+          <article class="feature-card reveal">
+            <p class="card-index">04</p>
             <h2>Cancel with a guided flow</h2>
             <p>
               The app doesn’t leave you thinking.
@@ -142,18 +149,11 @@
             </p>
           </article>
           <article class="feature-card reveal">
-            <p class="card-index">04</p>
+            <p class="card-index">05</p>
             <h2>Build your Plug Streak</h2>
             <p>
               Every cancellation counts.
-              Track what you've saved and don't fall back.
-            </p>
-          </article>
-          <article class="feature-card reveal">
-            <p class="card-index">05</p>
-            <h2>Smart Suggestions</h2>
-            <p>
-              Browse subscriptions by category and region. Discover services available in your country or explore apps from around the world.
+              Track what you’ve saved and don’t fall back.
             </p>
           </article>
           <article class="feature-card reveal">
@@ -214,6 +214,40 @@
                   alt="Add subscription screen showing provider, billing frequency, currency, and annual impact."
                 />
               </figure>
+            </div>
+          </article>
+
+          <article class="story-row story-row-image-only story-row-dual-full reveal">
+            <div class="story-copy">
+              <p class="story-tag">AI Receipt Upload &middot; Free</p>
+              <h3>Upload a receipt. Skip the typing.</h3>
+              <p>
+                Take a screenshot of your payment confirmation email. The AI reads the service name, amount, billing cycle, and next renewal date — and fills it all in automatically.
+              </p>
+              <p>
+                Review the details, hit save. No manual entry required.
+              </p>
+              <p>
+                Works best with payment confirmation emails. Completely free.
+              </p>
+            </div>
+            <div class="dual-shot dual-shot-equal">
+              <div class="story-shot-wrap story-shot-float">
+                <figure class="story-shot">
+                  <img
+                    src="./assets/screens/upload-receipt.jpg"
+                    alt="Upload Receipt screen showing the AI-powered receipt scanning interface with instructions."
+                  />
+                </figure>
+              </div>
+              <div class="story-shot-wrap story-shot-float">
+                <figure class="story-shot">
+                  <img
+                    src="./assets/screens/confirm-details.jpg"
+                    alt="Confirm Details screen showing auto-filled subscription data after AI receipt scan — service, amount, billing cycle, and next renewal."
+                  />
+                </figure>
+              </div>
             </div>
           </article>
 
@@ -281,6 +315,7 @@
               </figure>
             </div>
           </article>
+
         </section>
 
         <section class="supported-regions" id="regions">
@@ -534,11 +569,12 @@
 
           var rows = document.querySelectorAll('.story-row-dashboard, .story-row-image-only');
           rows.forEach(function (row) {
-            var img = row.querySelector('.story-shot img');
-            if (!img) return;
-            img.style.maxHeight = targetHeight + 'px';
-            img.style.height = 'auto';
-            img.style.width = 'auto';
+            var imgs = row.querySelectorAll('.story-shot img');
+            imgs.forEach(function (img) {
+              img.style.maxHeight = targetHeight + 'px';
+              img.style.height = 'auto';
+              img.style.width = 'auto';
+            });
           });
         }
 

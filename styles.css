@@ -780,6 +780,40 @@ body::before {
   margin-top: 100px;
 }
 
+.dual-shot-equal {
+  align-items: flex-start;
+}
+
+.dual-shot-equal .story-shot-wrap {
+  flex: 1;
+}
+
+.dual-shot-equal .story-shot-wrap:nth-child(2) {
+  margin-top: 0;
+}
+
+.dual-shot-equal .story-shot img {
+  height: auto;
+}
+
+.story-row-dual-full {
+  display: block;
+}
+
+.story-row-dual-full .story-copy {
+  max-width: 640px;
+  margin: 0 auto 60px;
+  text-align: center;
+}
+
+.story-row-dual-full .dual-shot {
+  gap: 40px;
+}
+
+.story-row-dual-full .dual-shot .story-shot-wrap {
+  flex: 1;
+}
+
 .story-shot-float {
   animation: spectralFloat 6s ease-in-out infinite;
 }
