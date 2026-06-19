@@ -25,15 +25,32 @@
           <a href="#screens">Screens</a>
           <a href="#regions">Regions</a>
           <a href="#flow">How it works</a>
-          <a
-            class="topnav-cta"
-            href="https://play.google.com/store/apps/details?id=com.shristy.subtracko"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img class="playstore-icon" src="./assets/brand/playstore-icon.png" alt="" aria-hidden="true" />
-            <span class="playstore-label">DOWNLOAD</span>
-          </a>
+          <div class="download-nav-wrap">
+            <button class="topnav-cta download-nav-btn" type="button" aria-haspopup="true" aria-expanded="false">
+              <span class="playstore-label">DOWNLOAD</span>
+              <span class="download-chevron" aria-hidden="true">&#x25BE;</span>
+            </button>
+            <div class="download-dropdown" role="menu" hidden>
+              <a
+                class="download-dropdown-item"
+                href="https://play.google.com/store/apps/details?id=com.shristy.subtracko"
+                target="_blank"
+                rel="noopener noreferrer"
+                role="menuitem"
+              >
+                <img src="./assets/brand/google-play-badge.png" alt="Get it on Google Play" />
+              </a>
+              <a
+                class="download-dropdown-item"
+                href="https://apps.apple.com/us/app/subtracko/id6771513471"
+                target="_blank"
+                rel="noopener noreferrer"
+                role="menuitem"
+              >
+                <img src="./assets/brand/Download_on_the_App_Store_Badge.svg.png" alt="Download on the App Store" />
+              </a>
+            </div>
+          </div>
         </nav>
       </div>
     </header>
@@ -63,13 +80,20 @@
               <a class="button button-primary" href="#screens">See the damage</a>
               <a class="button button-secondary" href="#features">How it works</a>
               <a
-                class="button button-secondary playstore-button"
+                class="button playstore-button"
                 href="https://play.google.com/store/apps/details?id=com.shristy.subtracko"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img class="googleplay-icon" src="./assets/brand/google-play-badge.png" alt="" aria-hidden="true" />
-                <!-- <span class="playstore-label">GET IT ON Google Play</span> -->
+                <img class="googleplay-icon" src="./assets/brand/google-play-badge.png" alt="Get it on Google Play" />
+              </a>
+              <a
+                class="button playstore-button"
+                href="https://apps.apple.com/us/app/subtracko/id6771513471"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img class="googleplay-icon" src="./assets/brand/Download_on_the_App_Store_Badge.svg.png" alt="Download on the App Store" />
               </a>
             </div>
 
@@ -737,6 +761,32 @@
         setActive('india');
         updateCarouselControls();
         positionPanelFor(activeRegionName);
+      })();
+
+      (function () {
+        var btn = document.querySelector('.download-nav-btn');
+        var dropdown = document.querySelector('.download-dropdown');
+        if (!btn || !dropdown) return;
+
+        function openDropdown() {
+          dropdown.hidden = false;
+          btn.setAttribute('aria-expanded', 'true');
+        }
+
+        function closeDropdown() {
+          dropdown.hidden = true;
+          btn.setAttribute('aria-expanded', 'false');
+        }
+
+        btn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          if (dropdown.hidden) { openDropdown(); } else { closeDropdown(); }
+        });
+
+        document.addEventListener('click', function () { closeDropdown(); });
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape') { closeDropdown(); btn.focus(); }
+        });
       })();
     </script>
   </body>

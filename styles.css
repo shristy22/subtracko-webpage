@@ -143,6 +143,10 @@ body::before {
   color: var(--accent);
 }
 
+.download-nav-wrap {
+  position: relative;
+}
+
 .topnav-cta {
   display: inline-flex;
   align-items: center;
@@ -153,12 +157,57 @@ body::before {
   background: linear-gradient(180deg, rgba(94, 252, 232, 0.18), rgba(94, 252, 232, 0.08));
   color: var(--text) !important;
   box-shadow: 0 0 0 1px rgba(94, 252, 232, 0.08), 0 12px 24px rgba(0, 0, 0, 0.22);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  letter-spacing: inherit;
 }
 
 .topnav-cta:hover {
   color: #041116 !important;
   background: var(--accent);
   border-color: var(--accent);
+}
+
+.download-chevron {
+  font-size: 0.7em;
+  margin-left: -4px;
+  opacity: 0.7;
+}
+
+.download-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  min-width: 200px;
+  background: #0d2128;
+  border: 1px solid rgba(94, 252, 232, 0.2);
+  border-radius: 14px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+  z-index: 200;
+}
+
+.download-dropdown-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 8px;
+  border-radius: 8px;
+  transition: background 0.15s;
+}
+
+.download-dropdown-item:hover {
+  background: rgba(94, 252, 232, 0.08);
+}
+
+.download-dropdown-item img {
+  height: 38px;
+  width: auto;
+  display: block;
 }
 
 .playstore-icon {
@@ -168,9 +217,8 @@ body::before {
   display: block;
 }
 .googleplay-icon {
-  width: 10em;
-  height: 3.5em;
-
+  width: auto;
+  height: 2.6em;
 }
 
 .playstore-label {
@@ -179,8 +227,9 @@ body::before {
 }
 
 .playstore-button {
-  gap: 12px;
+  gap: 0;
   text-transform: none;
+  padding: 0 26px;
 }
 
 .playstore-button .playstore-label {
@@ -251,7 +300,7 @@ body::before {
 .hero-actions {
   display: flex;
   flex-wrap: nowrap;
-  gap: 16px;
+  gap: 8px;
   margin-top: 30px;
   width: 100%;
 }
@@ -264,12 +313,13 @@ body::before {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 56px;
-  padding: 0 24px;
+  min-height: 42px;
+  padding: 0 18px;
   border-radius: 999px;
   text-decoration: none;
   font-family: "Arial Black", "Segoe UI", sans-serif;
-  letter-spacing: 0.08em;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   transition: transform 0.22s ease, background 0.22s ease, color 0.22s ease;
 }
