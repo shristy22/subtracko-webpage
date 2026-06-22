@@ -3,11 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SubTracko: Subscription Tracker</title>
+    <title>SubTracko – Subscription Tracker App | Track, Cancel &amp; Save</title>
     <meta
       name="description"
-      content="SubTracko helps people see what subscriptions really cost, track renewals, cancel waste, and keep proof of the money they saved."
+      content="Track all your subscriptions in one place. SubTracko shows your true annual spend, alerts you before renewals, and guides you to cancel — free on iOS &amp; Android."
     />
+    <link rel="canonical" href="https://subtracko.com/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type"        content="website" />
+    <meta property="og:url"         content="https://subtracko.com/" />
+    <meta property="og:site_name"   content="SubTracko" />
+    <meta property="og:title"       content="SubTracko – Subscription Tracker App | Track, Cancel &amp; Save" />
+    <meta property="og:description" content="Track all your subscriptions in one place. SubTracko shows your true annual spend, alerts you before renewals, and guides you to cancel — free on iOS &amp; Android." />
+    <meta property="og:image"       content="https://subtracko.com/assets/brand/subtracko-new.png" />
+    <meta property="og:image:alt"   content="SubTracko app screenshot" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card"        content="summary_large_image" />
+    <meta name="twitter:title"       content="SubTracko – Subscription Tracker App" />
+    <meta name="twitter:description" content="See what your subscriptions really cost. Track, cancel &amp; save — free on iOS &amp; Android." />
+    <meta name="twitter:image"       content="https://subtracko.com/assets/brand/subtracko-new.png" />
+
     <link rel="icon" type="image/svg+xml" href="./assets/brand/subtracko-mark.svg" />
     <link rel="alternate icon" type="image/png" href="./assets/brand/subtracko-mark.png" />
     <link rel="apple-touch-icon" href="./assets/brand/subtracko-new.png" />
@@ -788,6 +805,31 @@
           if (e.key === 'Escape') { closeDropdown(); btn.focus(); }
         });
       })();
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MobileApplication",
+      "name": "SubTracko",
+      "operatingSystem": "iOS, Android",
+      "applicationCategory": "FinanceApplication",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "url": "https://subtracko.com/",
+      "description": "Track all your subscriptions, see your true annual spend, catch renewals before they hit, and cancel with a guided flow.",
+      "installUrl": [
+        "https://play.google.com/store/apps/details?id=com.shristy.subtracko",
+        "https://apps.apple.com/us/app/subtracko/id6771513471"
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "SubTracko",
+      "url": "https://subtracko.com/"
+    }
     </script>
   </body>
 </html>
